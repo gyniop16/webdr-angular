@@ -7,16 +7,22 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments';
 
+/* Routing Module */
+import { AppRoutingModule } from './app-routing.module';
 
+/*Features*/
+import { PatientsModule } from './patients/patients.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent    
   ],
   imports: [
     BrowserModule,
-    !environment.production ? InMemoryWebApiModule.forRoot(DataMockService) : [],
+    AppRoutingModule,
+    !environment.production ? InMemoryWebApiModule.forRoot(DataMockService) : [],    
+    PatientsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
