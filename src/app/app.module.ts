@@ -1,11 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataMockService } from './data-mock-service';
 
 import { AppComponent } from './app.component';
 
 import { environment } from '../environments';
+
+import { CoreModule }    from './core/core.module';
 
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
@@ -20,11 +22,13 @@ import { PatientsModule } from './patients/patients.module';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     AppRoutingModule,
     !environment.production ? InMemoryWebApiModule.forRoot(DataMockService) : [],    
     PatientsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  exports: [ AppComponent ],
+  entryComponents: [ AppComponent ]
 })
 export class AppModule { }
