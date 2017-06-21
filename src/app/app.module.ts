@@ -29,6 +29,6 @@ import { PatientsModule } from './patients/patients.module';
   ],
   providers: [],
   exports: [ AppComponent ],
-  entryComponents: [ AppComponent ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
