@@ -14,11 +14,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 /*Features*/
 import { PatientsModule } from './patients/patients.module';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent,
+    LoginComponent    
   ],
   imports: [
     BrowserModule,
