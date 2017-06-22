@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
+//import { ContentComponent }    from './shared/content/content.component';
 
 @NgModule({
   imports: [
@@ -9,7 +10,7 @@ import { LoginComponent } from './login/login.component';
       /* define app module routes here, e.g., to lazily load a module
          (do not place feature module routes here, use an own -routing.module.ts in the feature instead)
        */
-       { path: '', component: LoginComponent },
+       //{ path: '', component: ContentComponent },
        { path: 'login', component: LoginComponent }
     ])
   ],

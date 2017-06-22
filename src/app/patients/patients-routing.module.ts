@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PatientsComponent } from './patients.component';
+import { ContentComponent }    from '../shared/content/content.component';
 
 const routes: Routes = [
 	{ path: 'patients',
-	           component: PatientsComponent,
+	           component: ContentComponent,
 	           children: [
+	           	{ path: '', component: PatientsComponent },
 	             /*{ path: '', component: PatientListComponent },
 	             { path: 'create', component: PatientCreateComponent },
 	             { path: ':id', component: PatientEditComponent }*/
