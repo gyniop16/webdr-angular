@@ -4,13 +4,15 @@ import { SharedModule }       from '../shared/shared.module';
 import { PatientsRoutingModule } from './patients-routing.module';
 import { PatientsService } from './patients.service';
 import { PatientsComponent } from './patients.component';
+import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
 
 @NgModule({
   imports: [
     SharedModule,
     PatientsRoutingModule
   ],
-  declarations: [PatientsComponent],
+  declarations: [PatientsComponent, PatientDetailComponent, PatientListComponent],
   providers: [PatientsService]
 })
 export class PatientsModule { }
