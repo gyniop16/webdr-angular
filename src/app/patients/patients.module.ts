@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule }       from '../shared/shared.module';
 
 import { PatientsRoutingModule } from './patients-routing.module';
-import { PatientsService } from './patients.service';
+import { PatientsService } from './shared/patients.service';
 import { PatientsComponent } from './patients.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
