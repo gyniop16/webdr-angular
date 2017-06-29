@@ -1,7 +1,5 @@
-<h2>Patient Detail</h2>
-<h3><i>Just a FormControl</i></h3>
-
 <form [formGroup]="patientForm" novalidate>
+	<fieldset>
   <div class="form-group">
 		<label class="center-block">First Name:
 		  <input class="form-control" formControlName="firstName">
@@ -37,7 +35,8 @@
 		  <input class="form-control" formControlName="email">
 		</label>
 	</div>
-	<div formGroupName="address" class="well well-lg">
+	<fieldset formGroupName="address">
+		<legend>Address</legend>
 		<div class="form-group">
 	      <label class="center-block">Street Address</label>
 	      <input class="form-control" formControlName="streetAddress"  />
@@ -80,7 +79,8 @@
 	      <label class="center-block">Reference</label>
 	      <input class="form-control" formControlName="reference"  />
 	    </div>
-	</div>
+	</fieldset>
+	</fieldset>
 </form>
 
 
