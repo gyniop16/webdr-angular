@@ -1,4 +1,4 @@
-<h2>Hero Detail</h2>
+<h2>Patient Detail</h2>
 <h3><i>Just a FormControl</i></h3>
 
 <form [formGroup]="patientForm" novalidate>
@@ -6,6 +6,80 @@
 		<label class="center-block">First Name:
 		  <input class="form-control" formControlName="firstName">
 		</label>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Last Name:
+		  <input class="form-control" formControlName="lastName">
+		</label>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Gender:
+		  <input class="form-control" formControlName="gender">
+		</label>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Date Of Birth:
+		  <input class="form-control" formControlName="dateOfBirth">
+		</label>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Marital Status:
+		  <input class="form-control" formControlName="maritalStatus">
+		</label>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Phone:
+		  <input class="form-control" formControlName="phone">
+		</label>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Email:
+		  <input class="form-control" formControlName="email">
+		</label>
+	</div>
+	<div formGroupName="address" class="well well-lg">
+		<div class="form-group">
+	      <label class="center-block">Street Address</label>
+	      <input class="form-control" formControlName="streetAddress"  />
+	    </div>
+
+	    <div class="form-group">
+	      <label class="center-block">Ext Number</label>
+	      <input class="form-control" formControlName="extNumber"  />
+	    </div>
+	    <div class="form-group">
+	      <label class="center-block">Int Number</label>
+	      <input class="form-control" formControlName="intNumber"  />
+	    </div>
+	    <div class="form-group">
+	      <label class="center-block">Colony</label>
+	      <input class="form-control" formControlName="colony"  />
+	    </div>
+	    <div class="form-group">
+	      <label class="center-block">City</label>
+	      <input class="form-control" formControlName="city"  />
+	    </div>
+
+	    <div class="form-group">
+	      <label class="center-block">Municipality</label>
+	      <input class="form-control" formControlName="municipality"  />
+	    </div>
+	    <div class="form-group">
+	      <label class="center-block">State</label>
+	      <input class="form-control" formControlName="state"  />
+	    </div>
+	    <div class="form-group">
+	      <label class="center-block">Country</label>
+	      <input class="form-control" formControlName="country"  />
+	    </div>
+	    <div class="form-group">
+	      <label class="center-block">Zip Code</label>
+	      <input class="form-control" formControlName="zipCode"  />
+	    </div>
+	    <div class="form-group">
+	      <label class="center-block">Reference</label>
+	      <input class="form-control" formControlName="reference"  />
+	    </div>
 	</div>
 </form>
 

@@ -12,8 +12,14 @@ export class Patient {
 
 
 export class Address {
-  street = '';
-  city   = '';
-  state  = '';
-  zip    = '';
+  streetAddress = '';
+  extNumber     = '';
+  intNumber     = '';
+  colony        = '';
+  city          = '';
+  municipality  = '';
+  state         = '';
+  country       = '';
+  zipCode       = '';
+  reference     = '';
 }
