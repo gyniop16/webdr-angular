@@ -7,5 +7,13 @@ export class Patient {
   maritalStatus: string;
   phone: string;
   email: string;
-  address: {};
+  addresses: Address[];
+}
+
+
+export class Address {
+  street = '';
+  city   = '';
+  state  = '';
+  zip    = '';
 }

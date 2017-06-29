@@ -1,3 +1,14 @@
-<p>
-  patient-detail works!
-</p>
+<h2>Hero Detail</h2>
+<h3><i>Just a FormControl</i></h3>
+
+<form [formGroup]="patientForm" novalidate>
+  <div class="form-group">
+		<label class="center-block">First Name:
+		  <input class="form-control" formControlName="firstName">
+		</label>
+	</div>
+</form>
+
+
+<p>Form value: {{ patientForm.value | json }}</p>
+<p>Form status: {{ patientForm.status | json }}</p>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule }       from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PatientsRoutingModule } from './patients-routing.module';
 import { PatientsService } from './shared/patients.service';
@@ -9,6 +10,7 @@ import { PatientListComponent } from './patient-list/patient-list.component';
 
 @NgModule({
   imports: [
+  	ReactiveFormsModule,
     SharedModule,
     PatientsRoutingModule
   ],
