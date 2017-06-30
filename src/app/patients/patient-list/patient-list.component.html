@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ngFor="let patient of patients"  [class.selected]="isSelected(patient)" (click)="onSelect(patient)">
+    <tr *ngFor="let patient of patients"  [class.selected]="isSelected(patient)" (click)="onSelect(patient)">
       <td>
         <span>{{patient.firstName}}</span>
       </td>
