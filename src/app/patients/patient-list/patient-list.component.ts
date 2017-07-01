@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import 'rxjs/add/operator/finally';
 
@@ -13,14 +14,21 @@ import { PatientsService } from '../shared/patients.service';
 export class PatientListComponent implements OnInit {
 
   patients: Patient[];  
-  isLoading = false;
-  selected: Patient;
+  isLoading = false;  
   errorMessage: any;
+  private selectedId: number;
 
-  constructor(private service: PatientsService) { }
 
-  ngOnInit() {
+  constructor(
+    private service: PatientsService,
+    private router: Router,   
+    private route: ActivatedRoute) { }
+
+  ngOnInit() {    
   	this.getPatients();
+    this.route.params.forEach((params: Params) => {
+        this.selectedId = +params['id'];
+    });
   }
 
   getPatients(){
@@ -28,15 +36,15 @@ export class PatientListComponent implements OnInit {
   	this.service.getPatients()
               .subscribe(patients => this.patients = patients,
                         error => this.errorMessage = <any>error );
-  	this.selected = undefined;
+  	this.selectedId = undefined;
   }
 
-  isSelected(){
-  	return true;
+  isSelected(patient: Patient){
+  	return patient.id === this.selectedId;
   }
 
-  select(patient: Patient){
-  	this.selected = patient;
+  onSelect(patient: Patient){
+  	this.router.navigate(['/patients', patient.id], { relativeTo: this.route });
   }
 
 }

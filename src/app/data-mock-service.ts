@@ -9,10 +9,13 @@ export class DataMockService implements InMemoryDbService {
         'maritalStatus': 'marital',
         'gender': 'gender',
         'phone': 'phone',
-        'email': 'email'
+        'email': 'email',
+        'addresses' : []
       },
-      {'id': 2, 'firstName': 'Narco'},
-      {'id': 3, 'firstName': 'Bombasto'}
+      {'id': 2, 'firstName': 'Narco',
+        'addresses' : []},
+      {'id': 3, 'firstName': 'Bombasto',
+        'addresses' : []}
     ];
     let doctors = [
     	{ id: 1, firstName: 'Dr Windstorm' },

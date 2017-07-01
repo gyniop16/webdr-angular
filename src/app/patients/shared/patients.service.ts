@@ -21,6 +21,12 @@ export class PatientsService {
                .catch(this.handleError);
   }
 
+  getPatient(id:number): Observable<Patient>{
+    return this.http.get(this.patientsUrl + '/' + id)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body.data || { };

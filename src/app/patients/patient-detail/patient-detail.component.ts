@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location }                 from '@angular/common';
 import { FormBuilder, FormGroup, Validators }            from '@angular/forms';
+
 import { Patient, Address } from '../shared/patient.model';
+import { PatientsService } from '../shared/patients.service';
 
 @Component({
   selector: 'app-patient-detail',
@@ -9,13 +13,35 @@ import { Patient, Address } from '../shared/patient.model';
 })
 export class PatientDetailComponent implements OnInit {
 
-	patientForm: FormGroup;
+  patient: Patient;
 
-  constructor(private fb: FormBuilder) {  	
+	patientForm: FormGroup;  
+  errorMessage: any;
+
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private service: PatientsService,
+              private route: ActivatedRoute,
+              private location: Location) {  	
   }
 
   ngOnInit() {
     this.createForm();
+    this.route.params.forEach((params: Params) => {
+            let id = +params['id']; // (+) converts string 'id' to a number
+            this.service.getPatient(id)
+              .subscribe(patient => {this.patient = patient; 
+                                     this.ngOnChanges();},
+                        error => this.errorMessage = error);
+        });
+    console.log(this.patient);
+  }
+
+  ngOnChanges() {
+    this.patientForm.reset({
+        firstName: this.patient.firstName,
+        address: this.patient.addresses[0] || new Address()
+      });
   }
 
   createForm(){
@@ -30,5 +56,14 @@ export class PatientDetailComponent implements OnInit {
   		address : this.fb.group(new Address())
   	});
   }
+
+    onSave() {
+    //    this.service.update(this.patient)
+    //       .then(() => this.onCancel());
+    }
+
+    onCancel() {
+        this.location.back();
+    }
 
 }
