@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule }       from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 import { PatientsRoutingModule } from './patients-routing.module';
 import { PatientsService } from './shared/patients.service';
@@ -13,8 +12,7 @@ import { PatientListComponent } from './patient-list/patient-list.component';
   imports: [
   	ReactiveFormsModule,
     SharedModule,
-    PatientsRoutingModule,
-    HttpModule
+    PatientsRoutingModule
   ],
   declarations: [PatientsComponent, PatientDetailComponent, PatientListComponent],
   providers: [PatientsService]

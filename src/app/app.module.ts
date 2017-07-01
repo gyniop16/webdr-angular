@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule }           from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataMockService } from './data-mock-service';
 
@@ -26,6 +27,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     CoreModule,
     AppRoutingModule,
+    HttpModule,
     !environment.production ? InMemoryWebApiModule.forRoot(DataMockService) : [],    
     PatientsModule
   ],

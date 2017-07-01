@@ -10,7 +10,7 @@ import { Patient }	from './patient.model';
 @Injectable()
 export class PatientsService {
 
-  private patientsUrl = 'app/patients';  // URL to web api
+  private patientsUrl = 'api/patients';  // URL to web api
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }

@@ -12,9 +12,10 @@ import { PatientsService } from '../shared/patients.service';
 })
 export class PatientListComponent implements OnInit {
 
-  patients: Observable<Patient[]>;  
+  patients: Patient[];  
   isLoading = false;
   selected: Patient;
+  errorMessage: any;
 
   constructor(private service: PatientsService) { }
 
@@ -24,8 +25,9 @@ export class PatientListComponent implements OnInit {
 
   getPatients(){
   	this.isLoading = true;
-  	this.patients = this.service.getPatients()
-  						.finally(() => this.isLoading = false);
+  	this.service.getPatients()
+              .subscribe(patients => this.patients = patients,
+                        error => this.errorMessage = <any>error );
   	this.selected = undefined;
   }
 
