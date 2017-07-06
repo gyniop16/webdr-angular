@@ -7,7 +7,7 @@ export class Patient {
   maritalStatus: string;
   phone: string;
   email: string;
-  addresses: Address[];
+  address: Address;
 }
 
 

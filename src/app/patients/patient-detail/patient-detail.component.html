@@ -79,10 +79,15 @@
 	      <label class="center-block">Reference</label>
 	      <input class="form-control" formControlName="reference"  />
 	    </div>
+	    <div class="pull-right">
+		    <button [disabled]="patientForm.pristine" (click)="revertChanges()" class="btn btn-default">Cancel</button>
+		    <button [disabled]="patientForm.pristine" (click)="save()" class="btn btn-primary">Save</button>
+	    </div>
 	</fieldset>
 	</fieldset>
 </form>
 
 
+<p>Model value: {{ patient | json }}</p>
 <p>Form value: {{ patientForm.value | json }}</p>
 <p>Form status: {{ patientForm.status | json }}</p>

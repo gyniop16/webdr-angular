@@ -1,7 +1,8 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 import { FormBuilder, FormGroup, Validators }            from '@angular/forms';
+import 'rxjs/add/operator/switchMap';
 
 import { Patient, Address } from '../shared/patient.model';
 import { PatientsService } from '../shared/patients.service';
@@ -27,20 +28,29 @@ export class PatientDetailComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.route.params.forEach((params: Params) => {
-            let id = +params['id']; // (+) converts string 'id' to a number
-            this.service.getPatient(id)
-              .subscribe(patient => {this.patient = patient; 
-                                     this.ngOnChanges();},
-                        error => this.errorMessage = error);
-        });
+    this.route.paramMap
+        .switchMap((params: ParamMap) => this.service.getPatient(+params.get('id')))
+        .subscribe(patient => { 
+                                this.patient = patient; 
+                                this.ngOnChanges();
+                              },
+                        error =>{
+                                  this.errorMessage = error;
+                                  
+                                });    
     console.log(this.patient);
   }
 
   ngOnChanges() {
     this.patientForm.reset({
         firstName: this.patient.firstName,
-        address: this.patient.addresses[0] || new Address()
+        lastName: this.patient.lastName,
+        gender: this.patient.gender,
+        dateOfBirth: this.patient.dateOfBirth,
+        maritalStatus: this.patient.maritalStatus,
+        phone: this.patient.phone,
+        email: this.patient.email,
+        address: this.patient.address || new Address()
       });
   }
 
@@ -57,13 +67,56 @@ export class PatientDetailComponent implements OnInit {
   	});
   }
 
-    onSave() {
+    save() {
+      this.patient = this.prepareSavePatient();
+      if(this.patient.id && this.patient.id != 0){
+        console.log("Saving patient");
+        console.log(this.patient);
+        //this.service.updatePatient(this.patient.id, this.patient);
+        this.service.updatePatient(this.patient.id, this.patient)
+          .subscribe(/* error handling */);
+          this.ngOnChanges();
+      }else{
+
+      }
     //    this.service.update(this.patient)
     //       .then(() => this.onCancel());
     }
 
     onCancel() {
         this.location.back();
+    }
+
+    revertChanges(){
+      this.ngOnChanges();
+    }
+
+    prepareSavePatient(): Patient {
+      const formModel = this.patientForm.value;
+
+      // deep copy of form model lairs
+      //const addresses: Address[] = formModel.addresses.map(
+      //  (address: Address) => Object.assign({}, address)
+      //);
+
+      // return new `Patient` object containing a combination of original hero value(s)
+      // and deep copies of changed form model values
+      const savePatient: Patient = {
+        id: this.patient.id,
+        //name: formModel.name as string,
+        firstName: formModel.firstName as string,
+        lastName: formModel.lastName as string,
+        gender: formModel.gender as string,
+        dateOfBirth: formModel.dateOfBirth as string, //date
+        maritalStatus: formModel.maritalStatus as string,
+        phone: formModel.phone as string,
+        email: formModel.email as string,
+        address : formModel.address
+
+        // addresses: formModel.secretLairs // <-- bad!
+        //addresses: addresses
+      };
+      return savePatient;
     }
 
 }

@@ -27,9 +27,21 @@ export class PatientsService {
             .catch(this.handleError);
   }
 
+  updatePatient(id:number, patient: Patient): Observable<Patient> {
+    return this.http.put(this.patientsUrl + '/' + id, patient)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
+  savePatient(patient: Patient): Observable<Patient>{
+    return this.http.post(this.patientsUrl, patient)
+            .map(this.extractData)
+            .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
-    return body.data || { };
+    return body ? body.data || { } : { };
   }
 
   private handleError (error: Response | any) {
