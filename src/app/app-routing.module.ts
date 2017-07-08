@@ -11,7 +11,6 @@ import { LoginComponent } from './login/login.component';
          (do not place feature module routes here, use an own -routing.module.ts in the feature instead)
        */
        //{ path: '', component: ContentComponent },
-       { path: 'login', component: LoginComponent }
     ])
   ],
   exports: [RouterModule]

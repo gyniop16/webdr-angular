@@ -4,7 +4,7 @@ export class DataMockService implements InMemoryDbService {
     let patients = [
       { 'id': 1,
         'firstName': 'Mr. Nice',
-        'lastName':'test',
+        'lastName': 'test',
         'dateOfBirth': '1988-04-12',
         'maritalStatus': 'marital',
         'gender': 'gender',
@@ -15,12 +15,12 @@ export class DataMockService implements InMemoryDbService {
       {'id': 3, 'firstName': 'Bombasto'}
     ];
     let doctors = [
-    	{ id: 1, firstName: 'Dr Windstorm' },
-      	{ id: 2, name: 'Bombasto' },
-      	{ id: 3, name: 'Magneta' },
-      	{ id: 4, name: 'Tornado' }	
+        { id: 1, firstName: 'Dr Windstorm' },
+        { id: 2, name: 'Bombasto' },
+        { id: 3, name: 'Magneta' },
+        { id: 4, name: 'Tornado' },
     ];
     return { patients : patients,
-    		doctors : doctors };
+      doctors : doctors };
   }
 }
